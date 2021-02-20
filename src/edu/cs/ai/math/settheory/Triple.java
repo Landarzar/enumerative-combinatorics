@@ -1,4 +1,4 @@
-package edu.cs.ai.math.settheory.objects;
+package edu.cs.ai.math.settheory;
 
 import java.util.HashMap;
 import java.util.Objects;

@@ -1,15 +1,18 @@
-package edu.cs.ai.math.settheory.objects;
+package edu.cs.ai.math.settheory.relation.implementation;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RelationImpl<U> implements Relation<U> {
+import edu.cs.ai.math.settheory.Tuple;
+import edu.cs.ai.math.settheory.relation.Relation;
+
+public class RelationGeneralImpl<U> implements Relation<U> {
 
 	int arity;
 	Set<Tuple<U>> tuples;
 
-	public RelationImpl(int arity, Set<Tuple<U>> tuples) {
+	public RelationGeneralImpl(int arity, Set<Tuple<U>> tuples) {
 		this.arity = arity;
 		if (tuples.stream().anyMatch(t -> t.getArity() != arity))
 			throw new IllegalArgumentException("Tuples with wrong arity");
@@ -17,11 +20,11 @@ public class RelationImpl<U> implements Relation<U> {
 	}
 
 	/***
-	 * Contructions the empty relation of specific arity
+	 * Yields the empty relation of specified arity
 	 * 
 	 * @param arity
 	 */
-	public RelationImpl(int arity) {
+	public RelationGeneralImpl(int arity) {
 		this.arity = arity;
 		this.tuples = new HashSet<>();
 	}
@@ -39,5 +42,17 @@ public class RelationImpl<U> implements Relation<U> {
 	@Override
 	public String toString() {
 		return tuples.toString();
+	}
+
+	@Override
+	public boolean isTotal() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public boolean isModular() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException();
 	}
 }

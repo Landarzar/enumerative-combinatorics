@@ -1,4 +1,4 @@
-package edu.cs.ai.math.settheory.objects;
+package edu.cs.ai.math.settheory;
 
 import java.util.ArrayList;
 import java.util.List;

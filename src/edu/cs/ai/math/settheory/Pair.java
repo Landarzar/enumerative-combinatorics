@@ -1,4 +1,4 @@
-package edu.cs.ai.math.settheory.objects;
+package edu.cs.ai.math.settheory;
 
 import java.util.HashMap;
 
@@ -7,7 +7,7 @@ import java.util.HashMap;
  * coressponding StackOverflow: <a href=
  * "https://stackoverflow.com/questions/156275/what-is-the-equivalent-of-the-c-pairl-r-in-java">here</a>.
  * 
- * @author arturh, Kai Sauerwald (documentation)
+ * @author arturh, Kai Sauerwald
  * 
  * @param <A> The type of the first element
  * @param <B> The type of the second element
