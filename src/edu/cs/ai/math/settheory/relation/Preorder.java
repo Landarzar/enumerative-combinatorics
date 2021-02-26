@@ -13,7 +13,6 @@ public interface Preorder<U> extends BinaryRelation<U> {
 
 	@Override
 	public default boolean isTransitive() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	

@@ -43,7 +43,7 @@ public class TotalPreorderImpl<U> extends AbstractTotalPreorderImpl<U> {
 	}
 
 	/***
-	 * Shrinks the underlying datastructures
+	 * Shrinks the underlying data structures
 	 */
 	private void trim() {
 		for (Iterator<Set<U>> iterator = layers.iterator(); iterator.hasNext();) {
