@@ -22,12 +22,12 @@ public interface AutoFunction<U> extends java.util.function.Function<Tuple<U>, U
 		return null;
 	}
 
-	/***
-	 * Checks whether this relations contains the tuple
-	 * @author Kai Sauerwald
-	 * @throws IllegalArgumentException When the arity does not match
-	 */
-	public boolean contains(Tuple<U> tuple);
+//	/***
+//	 * Checks whether this relations contains the tuple
+//	 * @author Kai Sauerwald
+//	 * @throws IllegalArgumentException When the arity does not match
+//	 */
+//	public boolean contains(Tuple<U> tuple);
 
 	
 	/****
