@@ -1,16 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>edu.cs.ai</groupId>
-    <artifactId>math</artifactId>
+    <artifactId>enumerative-combinatorics</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>math</name>
+    <name>enumerative-combinatorics</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/Landarzar/enumerative-combinatorics</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <sourceDirectory>src/</sourceDirectory>
@@ -21,6 +28,21 @@
                 <version>3.8.1</version>
                 <configuration>
                     <release>13</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-classpath</argument>
+                        <!-- automatically creates the classpath using all project dependencies,
+                 also adding the project build directory -->
+                        <classpath />
+                        <argument>edu.cs.ai.math.combinatorics.Test</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
