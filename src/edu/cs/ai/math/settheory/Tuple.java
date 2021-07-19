@@ -1,6 +1,8 @@
 package edu.cs.ai.math.settheory;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,6 +39,11 @@ public class Tuple<T> {
 	 */
 	public Tuple(List<T> elements) {
 		implTuple = new ArrayList<>(elements);
+	}
+	
+
+	public List<T> toList() {
+		return Collections.unmodifiableList(implTuple);
 	}
 
 	@Override
