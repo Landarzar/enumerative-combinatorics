@@ -27,10 +27,11 @@ public class PartitionsLexicographic {
 	 * 
 	 * @author Kai Sauerwald.
 	 */
-//	public static <E> Stream<Set<Set<E>>> stream(List<E> input) {
-//		Iterator<Set<E>> itr = iterator(input);
-//		return StreamSupport.stream(Spliterators.spliteratorUnknownSize(itr, Spliterator.IMMUTABLE), false);
-//	}
+	public static <E> Stream<List<List<E>>> stream(List<E> input) {
+		Iterator<List<List<E>>> itr = iterator(input);
+		return StreamSupport.stream(Spliterators.spliteratorUnknownSize(itr, Spliterator.IMMUTABLE), false);
+	}
+	
 	/***
 	 * Returns an iterator, that allows iteration of all partitions of the given set.
 	 * 
@@ -41,6 +42,42 @@ public class PartitionsLexicographic {
 		if (input == null)
 			throw new IllegalArgumentException();
 		
+		// Empty iterator
+		if(input.size() == 0)
+		return new Iterator<List<List<E>>>() {
+
+			@Override
+			public boolean hasNext() {
+				return false;
+			}
+
+			@Override
+			public List<List<E>> next() {
+				throw new NoSuchElementException();
+			}
+		};
+		
+
+		if(input.size() == 1)
+		return new Iterator<List<List<E>>>() {
+			boolean finished = false;
+			E element = input.get(0);
+
+			@Override
+			public boolean hasNext() {
+				return !finished;
+			}
+
+			@Override
+			public List<List<E>> next() {
+				if(finished)
+					throw new NoSuchElementException();
+				finished = true;
+				return List.of(List.of(element));
+			}
+		};
+		
+		// Here starts Algorithm H		
 		int n_tmp = input.size();
 
 		int[] aj_tmp = new int[n_tmp]; // Array for a_1,\ldots a_n;
@@ -52,7 +89,6 @@ public class PartitionsLexicographic {
 			bj_tmp[i] =1;
 		}
 
-		// This iterator, implements the same loop as the construct method
 		return new Iterator<List<List<E>>>() {
 			// H1 [initialization]
 			List<E> list = new ArrayList<E>(input);
@@ -80,6 +116,9 @@ public class PartitionsLexicographic {
 			 */
 			@Override
 			public List<List<E>> next() {
+				if(finished)
+					throw new NoSuchElementException();
+				
 				// H2 [Visit.]
 				int tmp_m = m + (ajs[n-1] == m ? 1 : 0);
 				ArrayList<List<E>> blocks = new ArrayList<>(tmp_m);
@@ -128,31 +167,21 @@ public class PartitionsLexicographic {
 	}
 	
 	public static void main(String[] args) {
+		iterator(List.of()).forEachRemaining(l -> {
+			System.out.println(l);
+		});
+		iterator(List.of(1)).forEachRemaining(l -> {
+			System.out.println(l);
+		});
+		iterator(List.of(1,2)).forEachRemaining(l -> {
+			System.out.println(l);
+		});
+		iterator(List.of(1,2,3)).forEachRemaining(l -> {
+			System.out.println(l);
+		});
 		iterator(List.of(1,2,3,4)).forEachRemaining(l -> {
 			System.out.println(l);
 		});
 		
 	}
-	
-	
-//	public static IEnumerable<List<List<T>>> GetAllPartitions<T>(T[] elements, int maxlen) {
-//	    if (maxlen<=0) {
-//	        yield return new List<List<T>>();
-//	    }
-//	    else {
-//	        T elem = elements[maxlen-1];
-//	        var shorter=GetAllPartitions(elements,maxlen-1);
-//	        foreach (var part in shorter) {
-//	            foreach (var list in part.ToArray()) {
-//	                list.Add(elem);
-//	                yield return part;
-//	                list.RemoveAt(list.Count-1);
-//	            }
-//	            var newlist=new List<T>();
-//	            newlist.Add(elem);
-//	            part.Add(newlist);
-//	            yield return part;
-//	            part.RemoveAt(part.Count-1);
-//	        }
-//	    }
 }
