@@ -28,7 +28,7 @@ public class EnumerativeCombinatorics {
 		}
 	}
 
-	static <T> void generatePermutations(List<T> elements, Consumer<List<T>> eater) {
+	public static <T> void generatePermutations(List<T> elements, Consumer<List<T>> eater) {
 		generatePermutations(0, new ArrayList<>(elements), new boolean[elements.size()], new ArrayList<>(elements),
 				eater);
 	}

@@ -130,6 +130,9 @@ public class PartitionsLexicographic {
 					blocks.get(ajs[i]).add(list.get(i));
 				}
 				
+				if(blocks.stream().anyMatch(b -> b.size()==0))
+					System.out.println("alert!");
+				
 				// GOTO H3 or H4
 				if(aj_tmp[n-1] != m)
 				{

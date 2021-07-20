@@ -20,7 +20,7 @@ public class KCombinationLexicographic {
 
 	public static void main(String[] args) {
 		ArrayList<Integer> fuenfzig = new ArrayList<>(50);
-		for (int i = 1; i <= 50; i++) {
+		for (int i = 1; i <= 25; i++) {
 			fuenfzig.add(i);
 
 		}
