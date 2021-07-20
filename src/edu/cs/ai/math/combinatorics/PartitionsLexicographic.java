@@ -130,8 +130,7 @@ public class PartitionsLexicographic {
 					blocks.get(ajs[i]).add(list.get(i));
 				}
 				
-				if(blocks.stream().anyMatch(b -> b.size()==0))
-					System.out.println("alert!");
+				assert !blocks.stream().anyMatch(b -> b.size()==0);
 				
 				// GOTO H3 or H4
 				if(aj_tmp[n-1] != m)
@@ -154,7 +153,7 @@ public class PartitionsLexicographic {
 				
 				
 				// H6 [Zero out a_{j+1} .. a_n.]
-				m = bjs[j-1] + (ajs[j-1] == ajs[j-1] ? 1 : 0);
+				m = bjs[j-1] + (ajs[j-1] == bjs[j-1] ? 1 : 0);
 				j += 1;
 				while(j<n)
 				{
@@ -182,6 +181,9 @@ public class PartitionsLexicographic {
 		iterator(List.of(1,2,3)).forEachRemaining(l -> {
 			System.out.println(l);
 		});
+		
+		
+		
 		iterator(List.of(1,2,3,4)).forEachRemaining(l -> {
 			System.out.println(l);
 		});
